@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="WpfApp3.Views.Menu3.Menu3_2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:WpfApp3.Views.Menu3"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Name="gridContent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.RowSpan="3" BorderBrush="White" BorderThickness="1" CornerRadius="5"></Border>
+        <Border Grid.Row="1" BorderBrush="Gray"  BorderThickness="0,2,0,2"></Border>
+        <Grid Grid.Row="0" Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Collection" Height="32" Width="32"  VerticalAlignment="Center" Foreground="White"/>
+                <TextBlock Style="{StaticResource MaterialDesignHeadline6TextBlock}" VerticalAlignment="Center" Text="Header" Foreground="White"></TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="5" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="SettingsTransfer" />
+                        <TextBlock Text="Menu1" />
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="5" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="SettingsTransfer" />
+                        <TextBlock Text="Menu2" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="Black" Opacity="0.7">
+            <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock}" Foreground="White">Menu3_2</TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="2" Background="Black">
+            <TextBlock Style="{StaticResource MaterialDesignHeadline6TextBlock}" VerticalAlignment="Center" Text="Footer" Foreground="White"></TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>

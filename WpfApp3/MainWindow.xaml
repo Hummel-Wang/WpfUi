@@ -1,0 +1,158 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:myLib="clr-namespace:MyLoadingLib;assembly=MyLoadingLib"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="15"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        Icon="./Images/favicon.png"
+        Title="MainWindow" Height="1080" Width="1920" WindowState="Maximized" Name="myWindow" WindowStyle="None" Loaded="MyWindow_Loaded" Closing="MyWindow_Closing">
+    <!--<Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded" >
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Duration="00:00:01" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>-->
+    <Window.Resources>
+        <ResourceDictionary>
+            <Storyboard x:Key="HideWindow">
+                <DoubleAnimation Duration="00:00:01" Storyboard.TargetProperty="Opacity" From="1" To="0" />
+                <!--<DoubleAnimation Duration="00:00:01" From="1" To="0" Storyboard.TargetProperty="Opacity" FillBehavior="Stop" />
+                <DoubleAnimation Duration="00:00:0.5" From="1" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleX)" FillBehavior="Stop" Storyboard.TargetName="myGrid"/>
+                <DoubleAnimation Duration="00:00:0.5" From="1" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleY)" FillBehavior="Stop" Storyboard.TargetName="myGrid"/>-->
+            </Storyboard>
+            <Storyboard x:Key="ShowWindow">
+                <DoubleAnimation Duration="00:00:01" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+            </Storyboard>
+            <!--<Storyboard x:Key="ShowWindow" >
+                <DoubleAnimation Duration="0:0:0.3" From="0" To="1" Storyboard.TargetProperty="Opacity" FillBehavior="Stop"/>
+                <DoubleAnimation Duration="0:0:0.3" From="0.8" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleX)" FillBehavior="Stop" Storyboard.TargetName="myGrid"/>
+                <DoubleAnimation Duration="0:0:0.3" From="0.8" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleY)" FillBehavior="Stop" Storyboard.TargetName="myGrid"/>
+            </Storyboard>-->
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard Storyboard="{StaticResource ShowWindow}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+
+    <Grid Name="myGrid" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform  ScaleX="1" ScaleY="1"/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Grid.Background>
+            <ImageBrush ImageSource="./Images/bj_1.jpg"></ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+
+        <!--<myLib:CirclePointRingLoading Grid.Row="0" Grid.RowSpan="3" Foreground="BlueViolet" Width="120" Height="120" Visibility="Hidden" Name="loading"></myLib:CirclePointRingLoading>-->
+        
+        <!--<materialDesign:Card Grid.Row="0" Grid.RowSpan="3" UniformCornerRadius="14"  Padding="4" Width="120" Height="120" Background="Black" Opacity="0.6">
+            <ProgressBar  Style="{StaticResource MaterialDesignCircularProgressBar}" Value="50" IsIndeterminate="True" Width="100" Height="100"  Foreground="White"/>
+        </materialDesign:Card>-->
+        
+
+        <StackPanel Grid.Row="0" Background="Black" Orientation="Horizontal">
+            <StackPanel.OpacityMask>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" Opacity="0.8">
+                    <GradientStop Offset="0.0" Color="Black"/>
+                    <GradientStop Offset="0.25" Color="Red"/>
+                    <GradientStop Offset="0.75" Color="White"/>
+                    <GradientStop Offset="1" Color="Transparent"/>
+                </LinearGradientBrush>
+            </StackPanel.OpacityMask>
+            <Image Source="pack://application:,,,/Images/logo_3.png" HorizontalAlignment="Left" VerticalAlignment="Center"></Image>
+            <TextBlock Text="农业物联网数据展示系统" Foreground="White" VerticalAlignment="Center" FontSize="36" FontWeight="Bold"></TextBlock>
+        </StackPanel>
+
+        <Grid Grid.Row="2" Background="Black">
+            <Grid.OpacityMask>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" Opacity="0.8">
+                    <GradientStop Offset="0.0" Color="Black"/>
+                    <GradientStop Offset="0.15" Color="White"/>
+                    <GradientStop Offset="0.4" Color="Transparent"/>
+                    <GradientStop Offset="0.7" Color="Red"/>
+                    <GradientStop Offset="1" Color="Black"/>
+                </LinearGradientBrush>
+            </Grid.OpacityMask>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.55*"/>
+                <ColumnDefinition Width="0.45*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--日期，星期，时间显示-->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock}" Foreground="White" Name="cuTime"></TextBlock>
+                <StackPanel Margin="10" VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource MaterialDesignHeadline4TextBlock}" Foreground="White" Name="cuWeek"></TextBlock>
+                    <TextBlock Style="{StaticResource MaterialDesignHeadline4TextBlock}" Foreground="White" Name="cuDate"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <!--登录-->
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <DockPanel VerticalAlignment="Center" Margin="5">
+                    <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True">
+                        <materialDesign:ColorZone Mode="Standard" Name="userZone" Padding="10"  CornerRadius="2" Panel.ZIndex="1" BorderBrush="White" BorderThickness="1" Background="Transparent" materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition  Width="*" />
+                                    <ColumnDefinition  Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button  Style="{DynamicResource MaterialDesignToolButton}" IsEnabled="False">
+                                    <materialDesign:PackIcon Kind="Account" Foreground="White" />
+                                </Button>
+                                <TextBox  Grid.Column="1" Margin="5" VerticalContentAlignment="Center" BorderThickness="0"  MinWidth="200" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Bold"
+                                          materialDesign:HintAssist.Hint="用户名" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"  Name="userName"/>
+                            </Grid>
+                        </materialDesign:ColorZone>
+                    </StackPanel>
+                </DockPanel>
+                <DockPanel VerticalAlignment="Center" Margin="5" Name="pwdDock">
+                    <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True">
+                        <materialDesign:ColorZone Mode="Standard" Name="pwdZone" Padding="10"  CornerRadius="2" Panel.ZIndex="1" BorderBrush="White" BorderThickness="1" materialDesign:ShadowAssist.ShadowDepth="Depth1" Background="Transparent">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition  Width="*" />
+                                    <ColumnDefinition  Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button  Style="{DynamicResource MaterialDesignToolButton}" IsEnabled="False">
+                                    <materialDesign:PackIcon Kind="Key"/>
+                                </Button>
+                                <PasswordBox  Grid.Column="1" Margin="5"   MinWidth="200" VerticalAlignment="Center" VerticalContentAlignment="Center" BorderThickness="0" Foreground="White" FontSize="18" FontWeight="Bold" 
+                                            materialDesign:HintAssist.Hint="密码"  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"  Name="pwd"/>
+                            </Grid>
+                        </materialDesign:ColorZone>
+                    </StackPanel>
+                </DockPanel>
+                <Button Height="{Binding ElementName=pwdDock, Path=ActualHeight}" Cursor="Hand" Width="120" Content="登 录" Margin="5" FontSize="18" FontWeight="Bold" Name="btnLogin" Click="BtnLogin_Click"/>
+                <Button  Height="{Binding ElementName=pwdDock, Path=ActualHeight}" Cursor="Hand" Width="120" Background="OrangeRed" Content="退 出" Margin="5" FontSize="18" FontWeight="Bold" Name="btnExit" Click="BtnExit_Click"/>
+            </StackPanel>
+            
+        </Grid>
+    </Grid>
+</Window>
